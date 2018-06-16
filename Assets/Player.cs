@@ -12,12 +12,13 @@ public class Player : MonoBehaviour {
 
     //States
     private bool isAlive = true;
+    //private bool isJumping = false;
 
     //Caching
     private Rigidbody2D myRigidbody;
     private Animator myAnimator;
     private Collider2D myCollider2D;
-    
+    private float gravityScaleAtStart;
 
 
 	// Use this for initialization
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         myCollider2D = GetComponent<Collider2D>();
+        gravityScaleAtStart = myRigidbody.gravityScale;
 
     }
 	
@@ -34,6 +36,9 @@ public class Player : MonoBehaviour {
         FlipSprite();
         Jump();
         ClimbLadder();
+        //Debug.Log("Jumping: " + isJumping);
+        //Debug.Log("Touching Ground: "+ myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")));
+        //Debug.Log("Touching Climbing: "+ myCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing")));
     }
 
     private void Run() {
@@ -50,24 +55,28 @@ public class Player : MonoBehaviour {
     {
         if (!myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground"))){ return; }
 
+
         if (CrossPlatformInputManager.GetButtonDown("Jump"))
         {
+
             Vector2 jumpVelocityToAdd = new Vector2(0f, jumpSpeed);
             myRigidbody.velocity += jumpVelocityToAdd;
         }
     }
 
     private void ClimbLadder() {
-        if (!myCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing"))) { return; }
+        if (!myCollider2D.IsTouchingLayers(LayerMask.GetMask("Climbing"))) {
+            myAnimator.SetBool("Climbing", false);
+            myRigidbody.gravityScale = gravityScaleAtStart;
+            return; }
 
+            myRigidbody.gravityScale = 0;
             float controlThrow = CrossPlatformInputManager.GetAxis("Vertical");
             Vector2 climbVelocity = new Vector2(myRigidbody.velocity.x, controlThrow*climbSpeed);
             myRigidbody.velocity = climbVelocity;
 
         bool playerHasVerticalVelocity = Mathf.Abs(CrossPlatformInputManager.GetAxis("Vertical")) > Mathf.Epsilon;
         myAnimator.SetBool("Climbing", playerHasVerticalVelocity);
-
-  
     }
 
 

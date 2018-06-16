@@ -25,7 +25,7 @@ MonoBehaviour:
     m_RandomTransform: 0
   - m_Neighbors: 0100000001000000010000000100000001000000010000000100000001000000
     m_Sprites:
-    - {fileID: 21300022, guid: f4134e3fb2193c240905c5de7220ba2a, type: 3}
+    - {fileID: 21300022, guid: baea8d22ca72bdf4fa369c60fb08e06e, type: 3}
     m_AnimationSpeed: 1
     m_PerlinScale: 0.5
     m_RuleTransform: 0
