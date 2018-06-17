@@ -90,7 +90,7 @@ Grid:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1385658233118130}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellSize: {x: 1.0666667, y: 1.0666667, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -450,15 +450,6 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: -8, y: -5, z: 0}
-    second:
-      m_TileIndex: 47
-      m_TileSpriteIndex: 46
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
   - first: {x: -1, y: -4, z: 0}
     second:
       m_TileIndex: 12
@@ -603,6 +594,24 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -1, y: 1, z: 0}
+    second:
+      m_TileIndex: 47
+      m_TileSpriteIndex: 46
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 2, y: 1, z: 0}
+    second:
+      m_TileIndex: 48
+      m_TileSpriteIndex: 47
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: 1, y: 3, z: 0}
     second:
       m_TileIndex: 46
@@ -710,6 +719,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 6bb3ecf0c235bfb4aa01b7f7c3021b1e, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: b548872aa87936e42b9b197ece72b24a, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 885d98886cb6fc24f96cac1d9bad9193, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: f4134e3fb2193c240905c5de7220ba2a, type: 3}
@@ -805,8 +816,10 @@ Tilemap:
     m_Data: {fileID: 21300030, guid: baea8d22ca72bdf4fa369c60fb08e06e, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: de0cc030f27a1d34aa086d5a9f128ac2, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: e0cf7172ce70c154982d7b70f48287e6, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 48
+  - m_RefCount: 49
     m_Data:
       e00: 1
       e01: 0
@@ -843,7 +856,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 52
+  - m_RefCount: 53
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 0
     m_Data: {r: 63.037678, g: 63.037678, b: 63.037678, a: 63.037678}
