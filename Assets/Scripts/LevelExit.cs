@@ -20,6 +20,12 @@ public class LevelExit : MonoBehaviour {
 
         Time.timeScale = 1f;
         var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        ScenePersist scenePersist = FindObjectOfType<ScenePersist>();
+        Destroy(scenePersist);
+
         SceneManager.LoadScene(currentSceneIndex + 1);
+
+       
     }
 }

@@ -5,10 +5,18 @@ using UnityEngine;
 public class Coin : MonoBehaviour {
 
     [SerializeField] AudioClip coinPickupSFX;
+    [SerializeField] int pickupAmount;
+    private bool coinPicked = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position);
-        Destroy(gameObject);    
+        if (!coinPicked)
+        {
+            coinPicked = true;
+            AudioSource.PlayClipAtPoint(coinPickupSFX, Camera.main.transform.position);
+            Destroy(gameObject);
+            FindObjectOfType<GameSession>().AddToScore(pickupAmount);
+        }
+
     }
 }
