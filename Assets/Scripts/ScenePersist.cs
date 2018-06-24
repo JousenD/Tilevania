@@ -5,10 +5,41 @@ using UnityEngine.SceneManagement;
 
 public class ScenePersist : MonoBehaviour {
 
+    static int sceneIndexofTheLastScene=0;
     private int sceneIndexAtStart;
+    
 
     private void Awake()
     {
+        int actualSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (sceneIndexofTheLastScene == actualSceneIndex)
+        {
+            int numScenePersist = FindObjectsOfType<ScenePersist>().Length;
+            if (numScenePersist > 1)
+            {
+                Destroy(gameObject);
+                Debug.Log("ScenePersist has been destoyed due to Singleton");
+            }
+            else
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+        }
+        else
+        {
+            StartCoroutine(Singleton());
+        }
+        
+    }
+
+    IEnumerator Singleton()
+    {
+        
+        float yieldDuration;
+
+        yield return new WaitForSecondsRealtime(Time.deltaTime);
+        
         int numScenePersist = FindObjectsOfType<ScenePersist>().Length;
         if (numScenePersist > 1)
         {
@@ -24,6 +55,7 @@ public class ScenePersist : MonoBehaviour {
     // Use this for initialization
     void Start() {
         sceneIndexAtStart = SceneManager.GetActiveScene().buildIndex;
+        sceneIndexofTheLastScene = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
